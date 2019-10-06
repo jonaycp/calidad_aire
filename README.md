@@ -24,7 +24,7 @@ Hay muchas más ideas y posibles fases, pero vamos a restringirnos a estas tres.
 
 ### A Futuro
 - [ ] Presentación de los datos en un notebook estilo Jupyter.
-- [ ] Gráficas de datos interactivas que permitan modificar los rangos de fechas y otros parámetros de los datos (como zona geográfica de las estaciones a mostrar) y que se actualicen las gráficas (idealmente en tiempo real).
+- [ ] Gráficas de datos interactivas que permitan modificar los rangos de fechas y otros parámetros de los datos (como zona geográfica de las estaciones a mostrar) y que se actualicen las gráficas (idealmente en tiempo real). Valorar (Streamlit)[https://github.com/streamlit/streamlit/] para este punto.
 
 ## Referencias y Datos
 - La web del ayuntamiento donde se pueden consultar estos datos es (esta)[https://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=aecb88a7e2b73410VgnVCM2000000c205a0aRCRD&vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD].
