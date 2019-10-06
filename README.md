@@ -25,3 +25,7 @@ Hay muchas más ideas y posibles fases, pero vamos a restringirnos a estas tres.
 ### A Futuro
 - [ ] Presentación de los datos en un notebook estilo Jupyter.
 - [ ] Gráficas de datos interactivas que permitan modificar los rangos de fechas y otros parámetros de los datos (como zona geográfica de las estaciones a mostrar) y que se actualicen las gráficas (idealmente en tiempo real).
+
+## Referencias y Datos
+- La web del ayuntamiento donde se pueden consultar estos datos es (esta)[https://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=aecb88a7e2b73410VgnVCM2000000c205a0aRCRD&vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD].
+- Hay más datos y enlaces relevantes en la web para posibles adiciones a este proyecto u otros que puedan surgir de este. (Catálogo de Datos del Ayuntamiento de Madrid)[https://datos.madrid.es/portal/site/egob/menuitem.9e1e2f6404558187cf35cf3584f1a5a0/?vgnextoid=374512b9ace9f310VgnVCM100000171f5a0aRCRD&vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD&vgnextfmt=default]
