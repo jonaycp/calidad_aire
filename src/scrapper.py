@@ -28,5 +28,6 @@ for i in fichero:
 # Apparently requests lib downloads files in a binary format, and it is not
 # clear to me how to transform that to text.
 for elink in links:
+    #TODO implement a check to see if the file was already downloaded. Using SQL?
     wget.download(elink, os.path.join('/home/victor/development/calidad_aire/', os.path.basename(elink)))
 
