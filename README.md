@@ -17,9 +17,10 @@ Hay muchas más ideas y posibles fases, pero vamos a restringirnos a estas tres.
 
 ## TODOs
 ### Inmediatos
-- [ ] Añadir módulo que extraiga los datos en crudo de los archivos y los cargue en el data model
+- [ ]  Perfeccionar la descarga de archivos y la carga y formateo básico.
     - [ ] Desarrollar el data model básico.
-    - [ ] Determinar si ese data model estará en una DB o archivos propios (protobuf como ejemplo).
+    - [ ] Guardado de datos preprocesados en DB o archivo en disco?
+    - [ ] Establecer la descarga automática de nuevos datos.
 - [ ] Añadir módulo de visualización. Primera fase, dibujar gráficas de líneas de evolución histórica y tendencia.
 
 ### A Futuro
