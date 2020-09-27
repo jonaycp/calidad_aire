@@ -1,0 +1,100 @@
+help
+help()
+history
+quit
+import requests
+import urllib3
+head = {
+        "User-Agent": "Mozilla/5.0 (X11; U; Linux amd64; rv:5.0) Gecko/20100101 Firefox/5.0 (Debian)",
+        "X-Requested-With": "XMLHttpRequest"
+}
+head
+req = requests.get(url, headers=head)
+url = "https://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=aecb88a7e2b73410VgnVCM2000000c205a0aRCRD&vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD"
+req = requests.get(url, headers=head)
+soup = BeautifulSoup(req.text)
+from bs4 import BeautifulSoup as bs
+soup = BeautifulSoup(req.text)
+soup = bs(req.text)
+soup
+soup.find_all('ico-csv')
+soup.find_all('class')
+soup.find_all('a')
+def has_class_and_ref(tag):
+return tag.has_attr('class') and tag.has_attr('href')
+def has_class_and_ref(tag):
+	return tag.has_attr('class') and tag.has_attr('href')
+soup.find_all(has_class_and_ref)
+class_refs = soup.find_all(has_class_and_ref)
+class_refs.print
+class_refs
+print (class_refs)
+type class_refs
+type(class_refs)
+soup.find_all(class="asociada-link ico-csv")
+soup.find_all("a", "asociada-link ico-csv")
+soup.find_all(class_="asociada-link ico-csv")
+descargas = soup.find_all(class_="asociada-link ico-csv")
+for elem in descargas:
+	print (elem['href'])
+soup..find_all('li', 'asociada-item')
+soup.find_all('li', 'asociada-item')
+soup.attr
+soup.attr()
+soup.tags()
+fichero = soup.find(class_="asociada-link ico-csv")
+type(fichero)
+print(fichero)
+fichero = soup.find('li', "asociada-item")
+fichero = soup.find(class_="asociada-link ico-csv")
+lista = soup.find('li', "asociada-item")
+print(lista)
+listas = soup.find_all('li', "asociada-item")
+print(listas)
+for lis in listas:
+	tg=lis.find('p', 'info-title')
+	print(tg.string)
+listas[0].find('p', 'info-title').string
+listas[2].find('p', 'info-title').string
+listas[2].find('p', 'info-title')
+print(listas[2].find('p', 'info-title'))
+listas.size
+type(listas)
+listas.length()
+listas.name
+soup.name
+listas.children
+listas.contents
+len(listas)
+listas[1]
+listas.prettyprint
+print(listas.prettify())
+print(listas[0].prettify())
+print(listas[1].prettify())
+print(listas[3].prettify())
+print(listas[4].prettify())
+listas_norec = soup.find_all('li', "asociada-item", recursive=False)
+len(listas_norec)
+listas
+listas[0]
+print(listas[0].prettify())
+print(listas[0].next_element.prettify())
+print(listas[0].next_element['class'])
+print(listas[0].next_element.get('class'))
+listas[0].next_element.get('class') == "info-title"
+listas[0].next_element.get('class') == 'info-title'
+listas[0].next_element.get('class') == ['info-title']
+def isMainList(tag):
+    return tag['li'] && tag['class']==['asociada-item'] && tag.next_element.get('class')==['info-title']
+    return tag['li'] and tag['class']==['asociada-item'] and tag.next_element.get('class')==['info-title']
+def isMainList(tag):
+    return tag['li'] and tag['class']==['asociada-item'] and tag.next_element.get('class')==['info-title']
+prueba_find = soup.find_all(isMainList)
+def isMainList(tag):
+    return tag.name == 'li' and tag['class']==['asociada-item'] and tag.next_element.get('class')==['info-title']
+prueba_find = soup.find_all(isMainList)
+def isMainList(tag):
+    return tag.name == 'li' and tag.get('class')==['asociada-item'] and tag.next_element.get('class')==['info-title']
+prueba_find = soup.find_all(isMainList)
+import readline
+readline.write_history_file('calidad_aire/history_session.txt')
