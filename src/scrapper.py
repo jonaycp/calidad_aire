@@ -1,6 +1,6 @@
 import requests
 from bs4 import BeautifulSoup as bs
-import urllib3
+#import urllib3
 import wget
 import os
 
@@ -29,5 +29,7 @@ for i in fichero:
 # clear to me how to transform that to text.
 for elink in links:
     #TODO implement a check to see if the file was already downloaded. Using SQL?
-    wget.download(elink, os.path.join('/home/victor/development/calidad_aire/', os.path.basename(elink)))
+    #wget.download(elink, os.path.join('/home/victor/development/calidad_aire/downloaded-data', os.path.basename(elink)))
+    # Let's try for windows
+    wget.download(elink, os.path.join('D:\Proyectos\Programming to study\Python Data Science\calidad_aire\downloaded-data', os.path.basename(elink)))
 
