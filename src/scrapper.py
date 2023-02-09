@@ -21,7 +21,7 @@ class Scrapper:
     url = 'https://datos.madrid.es/portal/site/egob/menuitem.c05c1f754a33a9fbe4b2e4b284f1a5a0/?vgnextoid=aecb88a7e2b73410VgnVCM2000000c205a0aRCRD&vgnextchannel=374512b9ace9f310VgnVCM100000171f5a0aRCRD&vgnextfmt=default'
     domain = 'https://datos.madrid.es'
     index_columns = ['NOMBRE', 'TAMANO', 'FECHADESCARGA']
-    index = pd.DataFrame( columns=index_columns)
+    index = pd.DataFrame(columns=index_columns)
 
     #Check if we have the index file, otherwise it will be created empty
     def __init__(self):
@@ -90,7 +90,7 @@ class Scrapper:
         for archivo in list(self.index['NOMBRE']):
             temp = pd.read_csv(self.local_path + archivo, sep=";")
             new_content.append(temp)
-            print(f'Fichero {archivo} ha cargado {len(temp)} lineas satisfacoriamente\t')
+            #print(f'Fichero {archivo} ha cargado {len(temp)} lineas satisfacoriamente\t')
             filas_total+=len(temp)
         print(f'Un total de {filas_total} han sido cargadas\t')
         return pd.concat(new_content)
@@ -118,9 +118,19 @@ class Scrapper:
 
         return my_data.drop(dropable, axis=1)
 
+
+##################################################################################################
+#                                        TESTS                                                   #
+##################################################################################################
+
 madrid = Scrapper()
 madrid.update()
 my_data = madrid.get_data()
 my_data = madrid.update_punto_muestreo(my_data)
 my_data = madrid.clean_invalid(my_data)
-print(my_data)
+#print(my_data)
+
+import graph_module as gm
+
+prueba_graph = gm.Graph_Module(my_data)
+print(prueba_graph.get_punto_muestreo('28079040', magnitud=7, ano=2022, mes=1, day=8))
