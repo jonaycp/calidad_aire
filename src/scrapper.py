@@ -5,6 +5,7 @@ import wget
 import os
 import time
 import pandas as pd
+import numpy as np
 import datetime
 
 
@@ -12,6 +13,12 @@ class Scrapper:
 
     local_path = '/home/jonay/Projects/calidadAire/calidad_aire/Files/'
     index_file = local_path + 'file_index.csv'
+    columns_set = ['PROVINCIA','MUNICIPIO','ESTACION','MAGNITUD','PUNTO_MUESTREO','ANO','MES',
+              'D01','V01','D02','V02','D03','V03','D04','V04','D05','V05','D06','V06','D07',
+              'V07','D08','V08','D09','V09','D10','V10','D11','V11','D12','V12','D13','V13',
+              'D14','V14','D15','V15','D16','V16','D17','V17','D18','V18','D19','V19','D20',
+              'V20','D21','V21','D22','V22','D23','V23','D24','V24','D25','V25','D26','V26',
+              'D27','V27','D28','V28','D29','V29','D30','V30','D31','V31']
 
     head = {"User-Agent": "Mozilla/3.0 (X11; U; Linux amd64; rv:5.0) Gecko/20100101 Firefox/5.0 (Debian)",
         "X-Requested-With": "XMLHttpRequest"
@@ -80,15 +87,41 @@ class Scrapper:
         else:
             print(f"/nSe han descargado {new_lines_counter} nuevos archivos de datos")
             return new_lines_counter
-
+    
+    #Load and concatenate all the data from csv files listed in index
     def get_data(self):
         new_content = []
         for archivo in self.index['NOMBRE']:
-            new_content.append(pd.read_csv(self.local_path + archivo, sep=";", index_col=1))
-
+            temp = pd.read_csv(self.local_path + archivo, sep=";", header=0)
+            new_content.append(temp)
         return pd.concat(new_content)
+    
+    #Some codes from label PUNTO_NUESTREO have change in the time, here is changed by the current ones
+    def update_punto_muestreo(self,my_data):
+        #The value of PUNTO_MUESTREO is a code like AAAAAAAAA_BB_CC where the point code is the A*, the B* is Magnitud and C* i have no idea
+        my_data['PUNTO_MUESTREO'] = my_data['PUNTO_MUESTREO'].str.split('_', expand=True)[0]
+
+        #Replacing old codes to new ones
+        my_data['ESTACION'] = my_data['ESTACION'].replace(['28079003'], '28079035')
+        my_data['ESTACION'] = my_data['ESTACION'].replace(['28079003'], '28079035')
+        my_data['ESTACION'] = my_data['ESTACION'].replace(['28079005'], '28079039')
+        my_data['ESTACION'] = my_data['ESTACION'].replace(['28079010'], '28079038')
+        my_data['ESTACION'] = my_data['ESTACION'].replace(['28079013'], '28079040')
+        my_data['ESTACION'] = my_data['ESTACION'].replace(['28079020'], '28079036')
+        my_data['ESTACION'] = my_data['ESTACION'].replace(['28079086'], '28079060')
+        return my_data
+    
+    #The columns DXX are valid only if VXX == V, taken that information we replace no valid values by NaN and remove the unnecesary VXX columns
+    def clean_invalid(self,my_data):
+        dropable = []
+        for number in range(1,32):
+            my_data.loc[my_data["V{:02d}".format(number)] == "N", "D{:02d}".format(number)] = np.nan
+            dropable.append("V{:02d}".format(number))
+
+        return my_data.drop(dropable, axis=1)
 
 madrid = Scrapper()
-print(madrid.index)
-madrid.update()
-print(madrid.get_data().head(20))
+my_data = madrid.get_data()
+my_data = madrid.update_punto_muestreo(my_data)
+my_data = madrid.clean_invalid(my_data)
+print(my_data)
